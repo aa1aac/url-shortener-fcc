@@ -1,0 +1,5 @@
+{
+  "env": {
+    "MONGODB_URI": "mongodb+srv://aa1aac:AKv2yMFxXtik55d3@urlshortener-mxjx0.mongodb.net/urlShort"
+  }
+}
