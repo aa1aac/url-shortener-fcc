@@ -45,3 +45,7 @@ exports.postNew = (req, res, next) => {
       });
   }
 };
+
+exports.redirectUrl = (req, res, next) => {
+  // check the short url and redirect
+};

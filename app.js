@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const { router } = require("./routes");
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("views"));
 app.use("/", router);
 

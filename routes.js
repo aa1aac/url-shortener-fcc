@@ -8,4 +8,6 @@ router.get("/", shortener.getIndex);
 
 router.post("/api/short-url/new", shortener.postNew);
 
+router.get("/api/short-url/:short", shortener.redirectUrl);
+
 module.exports = { router };
