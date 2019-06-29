@@ -8,7 +8,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
   </head>
-  <body>
-    <script src="" async defer></script>
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <body class="container">
+    <h4 class="text-center">API Project: URL Shortener Microservice</h4>
+    <h5>User Story:</h5>
+    <ul>
+      <li>
+        I can POST a URL to [project_url]/api/shorturl/new and I will receive a
+        shortened URL in the JSON response. Example :
+        {"original_url":"www.google.com","short_url":1}
+      </li>
+      <li>
+        If I pass an invalid URL that doesn't follow the
+        http(s)://www.example.com format, the JSON response will contain an
+        error like {"error":"invalid URL"}
+      </li>
+      <li>
+        When I visit the shortened URL, it will redirect me to my original link.
+      </li>
+    </ul>
+    <h5>Short URL Creation</h5>
+    example: POST [project_url]/api/shorturl/new
+    <br />
+    <br />
+    <div class="container">
+      <form action="/api/short-url/new" method="POST">
+        <div class="form-group">
+          <label for="urltobeshortened">URL to be shortened</label>
+          <input
+            type="text"
+            class="form-control"
+            name="url"
+            id="urltobeshortened"
+            placeholder="https://www.example.com"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script src=""></script>
   </body>
 </html>
