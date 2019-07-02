@@ -1,4 +1,5 @@
 const { URL, parse } = require("url");
+const uniqueId = require("uniqid");
 
 const Shorten = require("../model/shortUrl");
 
@@ -24,10 +25,14 @@ exports.postNew = (req, res, next) => {
     res.json({ error: "invalid URL" });
   }
   if (stringIsAValidUrl(req.body.url, ["http", "https"])) {
+    let short_url = uniqueId();
     Shorten.findOne({ original_url: req.body.url })
       .then(result => {
         if (!result) {
-          const shorten = new Shorten({ original_url: req.body.url });
+          const shorten = new Shorten({
+            original_url: req.body.url,
+            short_url
+          });
           shorten
             .save()
             .then(value => {
@@ -47,5 +52,12 @@ exports.postNew = (req, res, next) => {
 };
 
 exports.redirectUrl = (req, res, next) => {
-  // check the short url and redirect
+  const shortUrl = req.params.short;
+  Shorten.findOne({ short_url: shortUrl }).then(result => {
+    if (result) {
+      res.redirect(`${result.original_url}`);
+    } else {
+      res.json({ error: "no such short url found" });
+    }
+  });
 };
