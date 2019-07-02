@@ -36,13 +36,19 @@ exports.postNew = (req, res, next) => {
           shorten
             .save()
             .then(value => {
-              res.json(value);
+              res.json({
+                original_url: value.original_url,
+                short_url: value.short_url
+              });
             })
             .catch(error => {
               console.log(error);
             });
         } else {
-          res.json({ result });
+          res.json({
+            original_url: result.original_url,
+            short_url: result.short_url
+          });
         }
       })
       .catch(err => {
